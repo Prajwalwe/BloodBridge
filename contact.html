@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - Blood Bank</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        margin: 0; /* Removes space above the navbar */
+        background-color: #f8f9fa;
+      }
+      .contact-section {
+        padding: 30px 0;
+      }
+      .form-control {
+        border-radius: 10px;
+      }
+      .btn-primary {
+        background-color: #dc3545;
+        border: none;
+        font-weight: bold;
+      }
+      .btn-primary:hover {
+        background-color: #b71c1c;
+      }
+      .social-icons a {
+        font-size: 36px;
+        color: #333;
+        margin-right: 15px;
+        display: inline-block;
+      }
+      .social-icons a:hover {
+        color: #ff5722;
+      }
+      .footer {
+        background-color: #f8f9fa;
+        text-align: center; /* Centers the footer text */
+      }
+      @media (max-width: 768px) {
+        .contact-section h2 {
+          font-size: 1.5rem;
+        }
+        .form-control {
+          width: 100%;
+          margin: 0 auto;
+        }
+      }
+      @media (max-width: 576px) {
+        .contact-section {
+          padding: 20px;
+        }
+        .form-control {
+          margin: 0 auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Blood Bridge</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="contact.html">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <div class="container mt-5 contact-section">
+      <h2 class="text-center mb-4">Contact Us</h2>
+
+      <div class="row justify-content-center">
+        <!-- Contact Form -->
+        <div class="col-12 col-sm-10 col-md-6">
+          <form action="#" method="POST">
+            <div class="mb-3 text-start">
+              <label for="name" class="form-label">Full Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="form-control"
+                placeholder="Enter your full name"
+                required
+              />
+            </div>
+            <div class="mb-3 text-start">
+              <label for="email" class="form-label">Email Address</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-control"
+                placeholder="Enter your email"
+                required
+              />
+            </div>
+            <div class="mb-3 text-start">
+              <label for="message" class="form-label">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                class="form-control"
+                rows="4"
+                placeholder="Write your message here..."
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary mt-2 w-100">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>&copy; 2024 Blood Bank. All Rights Reserved.</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
