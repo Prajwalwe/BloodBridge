@@ -122,6 +122,13 @@
       <button id="notifyButton" class="btn btn-success w-100 notify-btn">
         Notify All
       </button>
+      <button
+        id="whatsappButton"
+        class="btn btn-secondary w-100 notify-btn"
+        style="margin-top: 10px"
+      >
+        WhatsApp
+      </button>
     </div>
 
     <!-- Firebase SDK -->
@@ -153,8 +160,12 @@
       const donorResults = document.getElementById("donorResults");
       const bloodBankResults = document.getElementById("bloodBankResults");
       const notifyButton = document.getElementById("notifyButton");
+      const whatsappButton = document.getElementById("whatsappButton");
+
       let currentDonors = [];
       let currentBloodBanks = [];
+
+      whatsappButton.style.display = "none";
 
       form.addEventListener("submit", async function (event) {
         event.preventDefault();
@@ -223,16 +234,17 @@
             });
           }
 
-          notifyButton.style.display =
-            currentDonors.length > 0 || currentBloodBanks.length > 0
-              ? "block"
-              : "none";
+          const showButtons =
+            currentDonors.length > 0 || currentBloodBanks.length > 0;
+          notifyButton.style.display = showButtons ? "block" : "none";
+          whatsappButton.style.display = showButtons ? "block" : "none";
         } catch (e) {
           console.error("Error retrieving data: ", e);
           donorResults.innerHTML = "<p>Error retrieving donor data.</p>";
           bloodBankResults.innerHTML =
             "<p>Error retrieving blood bank data.</p>";
           notifyButton.style.display = "none";
+          whatsappButton.style.display = "none";
         }
       });
 
@@ -246,6 +258,11 @@
         if (bloodBankPhones.length > 0) {
           alert(`Message sent to blood banks: ${bloodBankPhones.join(", ")}`);
         }
+        whatsappButton.style.display = "block";
+      });
+
+      whatsappButton.addEventListener("click", function () {
+        window.location.href = "whatsApp.html";
       });
     </script>
   </body>
