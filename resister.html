@@ -100,6 +100,8 @@
             class="form-control"
             id="pincode"
             placeholder="Enter your pin code"
+            pattern="^\d{6}$"
+            title="Pin code must be exactly 6 digits"
             required
           />
         </div>
@@ -111,6 +113,8 @@
             class="form-control"
             id="phone"
             placeholder="Enter your phone number"
+            pattern="^\d{10}$"
+            title="Phone number must be exactly 10 digits"
             required
           />
         </div>
@@ -127,6 +131,9 @@
         getFirestore,
         collection,
         addDoc,
+        query,
+        where,
+        getDocs,
       } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
       // Firebase config
@@ -150,30 +157,41 @@
         event.preventDefault();
 
         const age = parseInt(document.getElementById("age").value, 10);
+        const phone = document.getElementById("phone").value;
 
         if (age < 18 || age > 65) {
           alert("You must be between 18 and 65 years old to donate blood.");
           return;
         }
 
-        const formData = {
-          name: document.getElementById("name").value,
-          email: document.getElementById("email").value,
-          bloodType: document.getElementById("bloodType").value,
-          age,
-          location: document.getElementById("location").value,
-          pincode: document.getElementById("pincode").value,
-          phone: document.getElementById("phone").value,
-        };
-
         try {
+          // Check if the phone number already exists
+          const donorsRef = collection(db, "donors");
+          const phoneQuery = query(donorsRef, where("phone", "==", phone));
+          const querySnapshot = await getDocs(phoneQuery);
+
+          if (!querySnapshot.empty) {
+            alert("This phone number is already registered.");
+            return;
+          }
+
+          const formData = {
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            bloodType: document.getElementById("bloodType").value,
+            age,
+            location: document.getElementById("location").value,
+            pincode: document.getElementById("pincode").value,
+            phone,
+          };
+
           // Add the form data to Firestore
-          await addDoc(collection(db, "donors"), formData);
+          await addDoc(donorsRef, formData);
 
           alert("Donor data saved successfully!");
           form.reset();
         } catch (e) {
-          console.error("Error adding document: ", e);
+          console.error("Error checking or adding document: ", e);
           alert("Error saving donor data.");
         }
       });
