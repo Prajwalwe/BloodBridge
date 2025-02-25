@@ -36,8 +36,4 @@ For any queries or suggestions, feel free to reach out via the GitHub repository
 
 
 
-## Contact
-For any queries or suggestions, feel free to reach out via the GitHub repository.
-
-
 
